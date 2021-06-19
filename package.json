@@ -1,17 +1,28 @@
 {
-  "name": "quiz-web-app",
+  "name": "quiz-portal",
   "version": "1.0.0",
-  "description": "",
+  "description": "A web application for hosting online quiz and trivia consisting of 3 major parts Frontend, Backend and Database.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Devansh Chaudhary",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongodb": "^3.6.9"
-  }
+    "mongoose": "^5.12.14"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devansh016/Quiz-Portal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/devansh016/Quiz-Portal/issues"
+  },
+  "homepage": "https://github.com/devansh016/Quiz-Portal#readme"
 }
