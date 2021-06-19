@@ -1,16 +1,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoConnect = require('./util/database');
+const db = require('./util/database');
+const errorHandler = require('./util/error-handler');
 
 const app = express();
 const port = process.env.port || 80;
-app.use(bodyParser.urlencoded({ extended: false}));
 
-app.use('/', (req, res, next) =>{
-    res.send('hello world');
-})
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.json());
 
-mongoConnect((client)=>{
-    app.listen(port);
-    console.log("Server listening on port "+ port);
-});
+const userRoutes = require('./routes/user');
+
+//Handling User Authentication
+app.use('/user', userRoutes);
+
+//Handling Errors
+app.use(errorHandler);
+
+//Server Running
+app.listen(port);
+console.log("Server listening on port "+ port);

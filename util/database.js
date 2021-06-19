@@ -1,18 +1,16 @@
-const mongodb = require('mongodb');
 require('dotenv').config();
-const MongoClient = mongodb.MongoClient;
-const mongodbURL = process.env.MONGODB_URL;
+const mongoose = require('mongoose');
 
-
-const mongoConnect =(callback) => {
-    MongoClient.connect(mongodbURL)
-    .then( client => {
-        console.log('MongoDB Connected');
-        callback(client);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+const connectionOptions = { 
+    useCreateIndex: true, 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true, 
+    useFindAndModify: false 
 };
 
-module.exports = mongoConnect;
+mongoose.connect(process.env.MONGODB_URL, connectionOptions);
+mongoose.Promise = global.Promise;
+
+module.exports = {
+    User: require('../models/user')
+};
