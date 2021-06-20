@@ -1,5 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 async function authenticate({ username, password }) {
     // finding the use detail
@@ -7,8 +9,11 @@ async function authenticate({ username, password }) {
 
     // validating password and checking if user exists
     if (user && bcrypt.compareSync(password, user.password)) {
+        //Creating A Token
+        const token = jwt.sign({ sub: user.username }, process.env.JWT_SECRET, { expiresIn: '86400s' });
         return {
-            ...user.toJSON()
+            ...user.toJSON(),
+            token
         };
     }
 }
