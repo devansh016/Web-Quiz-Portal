@@ -1,7 +1,6 @@
 const Question = require('../models/question');
 require('dotenv').config();
 
-
 async function create(questionParam) {
     
     // check if question with same number exists
