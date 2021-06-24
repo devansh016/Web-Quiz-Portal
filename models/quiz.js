@@ -8,10 +8,12 @@ const quizSchema = new Schema({
     question_type: { type: String, default: "text" }
 });
 
-//To remove extra information
 quizSchema.set('toJSON', {
     virtuals: true,
     versionKey: false,
+    transform: function (doc, ret) {
+        delete ret._id;
+    }
 });
 
 module.exports = mongoose.model('Quiz', quizSchema);
