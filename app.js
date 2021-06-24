@@ -10,9 +10,11 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
 const userRoutes = require('./routes/user');
+const questionRoutes = require('./routes/question');
 
 //Handling User Authentication
 app.use('/user', userRoutes);
+app.use('/question', questionRoutes);
 
 //Handling Errors
 app.use(errorHandler);

@@ -2,9 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const questionSchema = new Schema({
-    totalQuestion: { type: String, required: true },
-    quizName: { type: String, unique: true, required: true },
-    question: { type: Array, required: true },
+    questionIndex: { type: String, unique: true, required: true },
+    textQuestion: { 
+        question: { type: String, required: true },
+        description: { type: String, required: true },
+        answer: { type: String, required: true }
+    },
     createdDate: { type: Date, default: Date.now }
 });
 
@@ -12,9 +15,6 @@ const questionSchema = new Schema({
 questionSchema.set('toJSON', {
     virtuals: true,
     versionKey: false,
-    transform: function (doc, ret) {
-        delete ret._id;
-    }
 });
 
 module.exports = mongoose.model('Question', questionSchema);
