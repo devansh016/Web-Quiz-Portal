@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const quizSchema = new Schema({
     user_id: { type: String, unique: true, required: true },
     user_name: { type: String, unique: true, required: true },
-    current_question: { type: Number, default: 0 },
+    current_question: { type: Number, default: 1 },
     question_type: { type: String, default: "text" }
 });
 
