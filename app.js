@@ -11,10 +11,12 @@ app.use(bodyParser.json());
 
 const userRoutes = require('./routes/user');
 const questionRoutes = require('./routes/question');
+const quizRoutes = require('./routes/quiz');
 
 //Handling User Authentication
 app.use('/user', userRoutes);
 app.use('/question', questionRoutes);
+app.use('/quiz', quizRoutes);
 
 //Handling Errors
 app.use(errorHandler);
